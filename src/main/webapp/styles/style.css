@@ -1,0 +1,145 @@
+/* General Body Styles */
+body {
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+	margin: 0;
+	padding: 0;
+	background-color: #f4f4f9;
+	color: #333;
+}
+
+/* Header Styles */
+h1 {
+	text-align: center;
+	color: #444;
+	margin-top: 20px;
+}
+
+/* Table Styles */
+table {
+	width: 80%;
+	margin: 20px auto;
+	border-collapse: collapse;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+	padding: 10px;
+	text-align: left;
+	border: 1px solid #ddd;
+}
+
+table th {
+	background-color: #0073e6;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+table tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+table tr:hover {
+	background-color: #f1f1f1;
+}
+
+/* Form Styles */
+form {
+	width: 50%;
+	margin: 20px auto;
+	padding: 15px;
+	background: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+}
+
+form input[type="text"], form input[type="number"], form select, form button
+	{
+	width: calc(100% - 20px);
+	padding: 8px 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 14px;
+	box-sizing: border-box;
+}
+
+form button, form input[type="submit"] {
+	background-color: #0073e6;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+form button:hover, form input[type="submit"]:hover {
+	background-color: #005bb5;
+}
+
+/* Link Styles */
+a {
+	text-decoration: none;
+	color: #0073e6;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* Alert Messages */
+.alerta-exito, .alerta-error {
+    display: none; /* Ocultar por defecto */
+    margin: 20px auto;
+    padding: 10px;
+    width: 80%;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.alerta-exito.visible {
+    display: block;
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.alerta-error.visible {
+    display: block;
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+/* Navigation Links */
+table a {
+	display: block;
+	text-align: center;
+	padding: 10px;
+	background-color: #0073e6;
+	color: white;
+	border-radius: 4px;
+	transition: background-color 0.3s ease;
+}
+
+table a:hover {
+	background-color: #005bb5;
+}
+
+/* Footer Links Section */
+table td {
+	text-align: center;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+	table, form {
+		width: 95%;
+	}
+	table th, table td {
+		font-size: 14px;
+	}
+	form input, form select, form button {
+		font-size: 14px;
+	}
+}

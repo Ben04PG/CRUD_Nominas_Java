@@ -22,10 +22,7 @@
 		</tr>
 		<c:forEach var="empleado" items="${lista}">
 			<tr>
-				<td><a
-					href="empleados?opcion=meditar&id=<c:out value="${ empleado.id}"></c:out>">
-						<c:out value="${ empleado.id}"></c:out>
-				</a></td>
+				<td><c:out value="${ empleado.id}"></c:out></td>
 				<td><c:out value="${ empleado.nombre}"></c:out></td>
 				<td><c:out value="${ empleado.dni}"></c:out></td>
 				<td><c:out value="${ empleado.sexo}"></c:out></td>
@@ -38,6 +35,12 @@
 	<table border="1">
 		<tr>
 			<td><a href="empleados?opcion=crear"> Alta Empleados</a></td>
+		</tr>
+		<tr>
+			<td><a href="empleados?opcion=salarios"> Buscar Empleados Salario</a></td>
+		</tr>
+		<tr>
+			<td><a href="empleados?opcion=filtrar"> Filtrar Empleados</a></td>
 		</tr>
 	</table>
 </body>

@@ -12,16 +12,12 @@
 
 	<h1>Alta Empleados</h1>
 
-	<c:if test="${not empty mensajeExito}">
-		<div class="alerta-exito">
-			${mensajeExito}
-		</div>
-	</c:if>
-	<c:if test="${not empty mensajeError}">
-		<div class="alerta-error">
-			${mensajeError}
-		</div>
-	</c:if>
+	<div
+		class="alerta-exito ${not empty mensajeExito ? 'visible' : 'oculto'}">
+		${mensajeExito}</div>
+	<div
+		class="alerta-error ${not empty mensajeError ? 'visible' : 'oculto'}">
+		${mensajeError}</div>
 
 
 	<form action="empleados" method="post">
@@ -37,13 +33,11 @@
 			</tr>
 			<tr>
 				<td>Sexo:</td>
-            <td>
-                <select name="sexo">
-                	<option>/---Seleccione---\</option>
-                    <option value="M">Masculino</option>
-                    <option value="F">Femenino</option>
-                </select>
-            </td>
+				<td><select name="sexo">
+						<option>/---Seleccione---\</option>
+						<option value="M">Masculino</option>
+						<option value="F">Femenino</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td>Categoria:</td>
@@ -56,10 +50,17 @@
 		</table>
 		<input type="submit" value="Guardar">
 	</form>
-	
+
 	<table border="1">
 		<tr>
 			<td><a href="empleados?opcion=info"> Listar Empleados</a></td>
+		</tr>
+		<tr>
+			<td><a href="empleados?opcion=salarios"> Buscar Empleados
+					Salario</a></td>
+		</tr>
+		<tr>
+			<td><a href="empleados?opcion=filtrar"> Filtrar Empleados</a></td>
 		</tr>
 	</table>
 </body>

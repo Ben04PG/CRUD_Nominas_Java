@@ -13,6 +13,7 @@
 	<h1>Mostrar Salario</h1>
 
 	<form action="empleados" method="get">
+	<input type="hidden" name="opcion" value="salarios">
 		<table border=1>
 			<tr>
 				<td>DNI:</td>
@@ -22,10 +23,10 @@
 		<input type="submit" value="Buscar">
 	</form>
 	
-	<%Empleado empleado = (Empleado) request.getAttribute("empleado"); %>
+	
 	
 	<h2>Info empleado</h2>
-	<p>Salario</p><%=empleado.getSueldo() %>
-	<p>DNI</p><%=empleado.getDni() %>
+	<p>Salario</p><c:out value="${salario}"></c:out>
+	<p>DNI</p><c:out value="${dni}"></c:out>
 </body>
 </html>

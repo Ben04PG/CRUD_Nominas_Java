@@ -162,7 +162,7 @@ public class EmpleadoDAO {
 		try {
 			sql = "SELECT * FROM empleados WHERE dni =?";
 			statement = connection.prepareStatement(sql);
-			statement.setString(3, dni);
+			statement.setString(1, dni);
 
 			resultSet = statement.executeQuery();
 
@@ -180,6 +180,79 @@ public class EmpleadoDAO {
 		}
 
 		return emp;
+	}
+
+	public List<Empleado> filtrarEmpleados(String criterio, String valor) throws SQLException {
+		List<Empleado> listaEmpleados = new ArrayList<>();
+		ResultSet resultSet = null;
+
+		String sql = "SELECT * FROM empleados WHERE " + criterio + " LIKE ?";
+		connection = obtenerConexion();
+
+		try {
+			System.out.println("SQL ejecutada: " + sql);
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, "%" + valor + "%");
+			resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+				Empleado e = new Empleado();
+				e.setId(resultSet.getInt("id"));
+				e.setNombre(resultSet.getString("nombre"));
+				e.setDni(resultSet.getString("dni"));
+				e.setSexo(resultSet.getString("sexo"));
+				e.setCategoria(resultSet.getInt("categoria"));
+				e.setAnyos(resultSet.getInt("anyos"));
+				listaEmpleados.add(e);
+			}
+			System.out.println("Cantidad de empleados filtrados: " + listaEmpleados.size());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (resultSet != null)
+				resultSet.close();
+			if (statement != null)
+				statement.close();
+			if (connection != null)
+				connection.close();
+		}
+
+		return listaEmpleados;
+	}
+
+	public Empleado obtenerEmpleadoPorId(int id) throws SQLException {
+		Empleado empleado = null;
+		ResultSet resultSet = null;
+
+		String sql = "SELECT * FROM empleados WHERE id = ?";
+		connection = obtenerConexion();
+
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, id);
+			resultSet = statement.executeQuery();
+
+			if (resultSet.next()) {
+				empleado = new Empleado();
+				empleado.setId(resultSet.getInt(1));
+				empleado.setNombre(resultSet.getString(2));
+				empleado.setDni(resultSet.getString(3));
+				empleado.setSexo(resultSet.getString(4));
+				empleado.setCategoria(resultSet.getInt(5));
+				empleado.setAnyos(resultSet.getInt(6));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (resultSet != null)
+				resultSet.close();
+			if (statement != null)
+				statement.close();
+			if (connection != null)
+				connection.close();
+		}
+
+		return empleado;
 	}
 
 	/**

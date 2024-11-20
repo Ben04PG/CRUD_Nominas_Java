@@ -19,7 +19,6 @@
 			<td>Sexo</td>
 			<td>Categoria</td>
 			<td>Años</td>
-			<td>Accion</td>
 		</tr>
 		<c:forEach var="empleado" items="${lista}">
 			<tr>

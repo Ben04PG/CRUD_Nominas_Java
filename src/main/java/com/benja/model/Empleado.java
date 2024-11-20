@@ -16,15 +16,6 @@ public class Empleado {
 	 private int sueldo;
 	 
 	 /**
-	     * Tabla de sueldos base según la categoría del empleado.
-	     * 
-	     * El sueldo base para la categoría 1 es 50,000, y se incrementa en 20,000 unidades por cada categoría adicional.
-	     */
-		private static final int SUELDO_BASE[] =
-			{50000, 70000, 90000, 110000, 130000,
-			150000, 170000, 190000, 210000, 230000};
-	 
-	 /**
 	     * Constructor que inicializa un nuevo objeto Empleado con los valores dados.
 	     * 
 	     * @param id            El identificador del empleado.
@@ -96,6 +87,10 @@ public class Empleado {
 	  this.anyos = anyos;
 	 }
 	 
+	 public void setSueldo(int sueldo) {
+		 this.sueldo = sueldo;
+	 }
+	 
 	 public int getSueldo() {
 		 return sueldo;
 	 }
@@ -115,10 +110,25 @@ public class Empleado {
 	     * @param empleado el empleado del cual se desea calcular el sueldo.
 	     * @return el sueldo calculado para el empleado.
 	     */
-		public static int calcularSueldo(Empleado empleado) {
-			int sueldo;
-			int sueldoBase = SUELDO_BASE[empleado.getCategoria()-1];
-			return sueldo = sueldoBase + 5000*empleado.anyos;
+	 public static int calcularSueldo(Empleado empleado) {
+		 /**
+		     * Tabla de sueldos base según la categoría del empleado.
+		     * 
+		     * El sueldo base para la categoría 1 es 50,000, y se incrementa en 20,000 unidades por cada categoría adicional.
+		     */
+			final int [] sueldosCategoria =
+				{50000, 70000, 90000, 110000, 130000,
+				150000, 170000, 190000, 210000, 230000};
+			
+			if (empleado.getCategoria() < 0 || empleado.getCategoria() > sueldosCategoria.length) {
+				    throw new IllegalArgumentException("Categoría fuera de rango: " + empleado.getCategoria());
+				}
+			int sueldoBase = sueldosCategoria[empleado.getCategoria()-1];
+			int anyosExperiencia = empleado.getAnyos();
+		    int sueldo = sueldoBase + 5000 * anyosExperiencia;
+		    empleado.setSueldo(sueldo);  // Actualiza el atributo `sueldo` del objeto
+		    return sueldo;
 		}
+
 	 
 	}

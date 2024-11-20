@@ -19,6 +19,9 @@
 		<tr>
 			<td><a href="empleados?opcion=salarios"> Buscar Empleados Salario</a></td>
 		</tr>
+		<tr>
+			<td><a href="empleados?opcion=filtrar"> Filtrar Empleados</a></td>
+		</tr>
 	</table>
 </body>
 </html>
